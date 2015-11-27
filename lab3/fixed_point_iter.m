@@ -6,16 +6,16 @@ function [x1, x2, steps] = fixed_point_iter(x1, x2, prec)
 	
 	steps = 0;
 
-	x1_next = func1(x1, x2);
-	x2_next = func2(x1, x2);
+	x1_next = func1_mod(x1, x2);
+	x2_next = func2_mod(x1, x2);
 
 	while abs(x1_next - x1) + abs(x2_next - x2) >= 2 * prec
 		++steps;
 		x1 = x1_next;
 		x2 = x2_next;
 
-		x1_next = func1(x1, x2);
-		x2_next = func2(x1, x2);
+		x1_next = func1_mod(x1, x2);
+		x2_next = func2_mod(x1, x2);
 	end;
 end
 

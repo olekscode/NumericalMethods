@@ -14,6 +14,8 @@ interval = [a:step:b];
 
 plot(interval, func1(interval, interval), 'r', 'linewidth', linewidth);
 plot(interval, func2(interval, interval), 'b', 'linewidth', linewidth);
+plot(interval, func1_mod(interval, interval), 'g', 'linewidth', linewidth);
+plot(interval, func2_mod(interval, interval), 'y', 'linewidth', linewidth);
 
 % get values to plot
 satisfied = false;
