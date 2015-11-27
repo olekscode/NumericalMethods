@@ -10,7 +10,7 @@ load('data/data12.mat');
 step = abs(b - a) / 100;
 interval = [a:step:b];
 
-prec = 0.1;
+prec = 0.00001;
 x0 = (b - a) / 2;
 
 linewidth = 2;
@@ -46,11 +46,12 @@ end;
 % plot requested values
 for i = 1:length(x_val)
 	x = x_val(i);
-	y = gauss1(f, step, x0, x, prec);
+	[y, steps] = gauss1(f, step, x0, x, prec);
+	printf('Steps[%0.1f; %0.1f] = %d\n', x, y, steps);
 
 	plot(x, f(x), 'b', 'markersize', markersize);
 	plot(x, y, 'r', 'markersize', markersize);
 
-	printf('L(%0.1f)     = %f\n', x, y);
-	printf('Error[%0.1f] = %f\n', x, error(f(x), y));
+	printf('L(%0.1f)          = %f\n', x, y);
+	printf('Error[%0.1f]      = %f\n\n', x, error(f(x), y));
 end;

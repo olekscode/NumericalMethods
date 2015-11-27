@@ -1,4 +1,4 @@
-function L = gauss1(f, h, x0, x, prec)
+function [L, steps] = gauss1(f, h, x0, x, prec)
 	t = (x - x0) / h;
 
 	T_even = 1;
@@ -8,8 +8,10 @@ function L = gauss1(f, h, x0, x, prec)
 	L_prev = L + 2 * prec;
 
 	k = 1;
+	steps = 0;
 
 	while abs(L - L_prev) >= prec
+		++steps;
 		T_even = T_odd .* (t - k) / (2*k);
 		T_odd = T_even .* (t + k) / (2*k + 1);
 
