@@ -2,7 +2,7 @@
 % when the next one comes forward
 hold on;
 
-marksize = 10;
+markersize = 10;
 linewidth = 2;
 
 % load the dataset (x and y vectors)
@@ -11,7 +11,7 @@ load('data/data12.mat');
 
 % plot the dataset
 for i = 1:length(x)
-	plot(x(i), y(i), 'b', 'markersize', marksize);
+	plot(x(i), y(i), 'b', 'markersize', markersize);
 end;
 
 % plot Lagrange
@@ -46,6 +46,6 @@ end;
 for i = 1:length(x_val)
 	x0 = x_val(i);
 	L = lagrange(x, y, x0);
-	plot(x0, L, 'r', 'markersize', marksize);
+	plot(x0, L, 'r', 'markersize', markersize);
 	printf('L(%d) = %d\n', x0, L);
 end;
