@@ -13,13 +13,13 @@ plot(t, func2(t), 'b');
 plot(t, identity_function(t), 'g');
 
 legend('y = 1 + 0.5 ^ x',
-	   'y = log2(1/(x - 1))',
-	   'y = x');
+       'y = log2(1/(x - 1))',
+       'y = x');
 
 % plot the steps of a fixed-point iteration
 [res steps] = fixed_point_iteration(@func1, 0);
 for i = 1:length(steps)
-	disp(steps(i));
-	text(steps(i), func1(steps(i)) - 0.2, int2str(i));
-	plot(steps(i), func1(steps(i)), 'rs');
+    disp(steps(i));
+    text(steps(i), func1(steps(i)) - 0.2, int2str(i));
+    plot(steps(i), func1(steps(i)), 'rs');
 end

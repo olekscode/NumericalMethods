@@ -18,40 +18,40 @@ markersize = 10;
 
 % plot the given function
 plot(interval, f(interval),
-	'b', 'linewidth', linewidth);
+    'b', 'linewidth', linewidth);
 
 % plot the interpolated function
 plot(interval, gauss1(f, step, x0, interval, prec),
-	'r', 'linewidth', linewidth);
+    'r', 'linewidth', linewidth);
 
 % get values to plot
 satisfied = false;
 while !satisfied
-	printf('Input some x-values from the interval [%0.1f; %0.1f].\n', a, b);
-	printf('Hint: Use Octave vector format to input more than one value.\n');
-	x_val = input('');
-	printf('\n');
+    printf('Input some x-values from the interval [%0.1f; %0.1f].\n', a, b);
+    printf('Hint: Use Octave vector format to input more than one value.\n');
+    x_val = input('');
+    printf('\n');
 
-	satisfied = true;
+    satisfied = true;
 
-	for i = 1:length(x_val)
-		if (x_val(i) < a || x_val(i) > b)
-			printf('Your values exceed the interval. Try again\n\n');
-			satisfied = false;
-			break;
-		endif;
-	end;
+    for i = 1:length(x_val)
+        if (x_val(i) < a || x_val(i) > b)
+            printf('Your values exceed the interval. Try again\n\n');
+            satisfied = false;
+            break;
+        endif;
+    end;
 end;
 
 % plot requested values
 for i = 1:length(x_val)
-	x = x_val(i);
-	[y, steps] = gauss1(f, step, x0, x, prec);
-	printf('Steps[%0.1f; %0.1f] = %d\n', x, y, steps);
+    x = x_val(i);
+    [y, steps] = gauss1(f, step, x0, x, prec);
+    printf('Steps[%0.1f; %0.1f] = %d\n', x, y, steps);
 
-	plot(x, f(x), 'b', 'markersize', markersize);
-	plot(x, y, 'r', 'markersize', markersize);
+    plot(x, f(x), 'b', 'markersize', markersize);
+    plot(x, y, 'r', 'markersize', markersize);
 
-	printf('L(%0.1f)          = %f\n', x, y);
-	printf('Error[%0.1f]      = %f\n\n', x, error(f(x), y));
+    printf('L(%0.1f)          = %f\n', x, y);
+    printf('Error[%0.1f]      = %f\n\n', x, error(f(x), y));
 end;

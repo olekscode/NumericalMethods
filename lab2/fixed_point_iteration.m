@@ -1,34 +1,34 @@
 function [x, steps] = fixed_point_iteration(A, b, precision, maxl)
-	d = diag(A);
-	
-	for i=1:size(A,1)
-		A(i,i) = 0;
-	end;
+    d = diag(A);
+    
+    for i=1:size(A,1)
+        A(i,i) = 0;
+    end;
 
-	C = A ./ d;
-	f = b ./ d;
+    C = A ./ d;
+    f = b ./ d;
 
-	% Initial value
-	x = ones(size(b));
-	x_next = f - C * x;
-	steps = [x];
+    % Initial value
+    x = ones(size(b));
+    x_next = f - C * x;
+    steps = [x];
 
-	precision *= ones(size(b));
-	
-	k = 1;
-	for k = 1:maxl
-		x = x_next;
-		x_next = f - C * x;
-		steps = [steps x];
+    precision *= ones(size(b));
+    
+    k = 1;
+    for k = 1:maxl
+        x = x_next;
+        x_next = f - C * x;
+        steps = [steps x];
 
-		if abs(x_next - x) < precision
-			break;
-		end;
-	end;
-	
-	if k == maxl
-		disp('ERROR: Fixed point iteration won''t converge on this data.');
-	end;
+        if abs(x_next - x) < precision
+            break;
+        end;
+    end;
+    
+    if k == maxl
+        disp('ERROR: Fixed point iteration won''t converge on this data.');
+    end;
 end
 
 % x = ones(size(b));
@@ -38,9 +38,9 @@ end
 % precision *= ones(size(b));
 
 % while (abs(x_next - x) >= precision)
-% 	x = x_next;
-% 	x_next = C * x + b;
-% 	steps = [steps x];
+%     x = x_next;
+%     x_next = C * x + b;
+%     steps = [steps x];
 % end;
 
 

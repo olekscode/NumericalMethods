@@ -20,21 +20,21 @@ plot(interval, func2_mod(interval, interval), 'y', 'linewidth', linewidth);
 % get values to plot
 satisfied = false;
 while !satisfied
-	printf('Input two initial x-values from the interval [%0.1f; %0.1f].\n',
-		a, b);
-	printf('Hint: Use Octave vector format.\n');
-	x_init = input('');
-	printf('\n');
+    printf('Input two initial x-values from the interval [%0.1f; %0.1f].\n',
+        a, b);
+    printf('Hint: Use Octave vector format.\n');
+    x_init = input('');
+    printf('\n');
 
-	satisfied = true;
+    satisfied = true;
 
-	for i = 1:2
-		if (x_init(i) < a || x_init(i) > b)
-			printf('Your values exceed the interval. Try again\n\n');
-			satisfied = false;
-			break;
-		endif;
-	end;
+    for i = 1:2
+        if (x_init(i) < a || x_init(i) > b)
+            printf('Your values exceed the interval. Try again\n\n');
+            satisfied = false;
+            break;
+        endif;
+    end;
 end;
 
 % plot requested values
